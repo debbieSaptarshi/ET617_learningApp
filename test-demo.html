@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Mode Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .status { padding: 20px; border-radius: 8px; margin: 20px 0; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🎯 Learning LMS - Demo Mode Test</h1>
+    
+    <div class="status success">
+        <h3>✅ Application Status</h3>
+        <p><strong>Server:</strong> Running on port 3002</p>
+        <p><strong>Mode:</strong> Demo Mode (Supabase not configured)</p>
+        <p><strong>Status:</strong> Ready for testing</p>
+    </div>
+
+    <div class="status info">
+        <h3>🔗 Test Links</h3>
+        <ul>
+            <li><a href="http://localhost:3002" target="_blank">🏠 Home Page</a></li>
+            <li><a href="http://localhost:3002/courses" target="_blank">📚 Courses Page</a></li>
+            <li><a href="http://localhost:3002/courses/demo-course-1" target="_blank">🎓 Sample Course</a></li>
+            <li><a href="http://localhost:3002/courses/demo-course-1/lessons/demo-lesson-1" target="_blank">📖 Sample Lesson</a></li>
+            <li><a href="http://localhost:3002/dashboard" target="_blank">📊 Dashboard (Demo Mode)</a></li>
+        </ul>
+    </div>
+
+    <div class="status info">
+        <h3>🎯 What You Can Test</h3>
+        <ul>
+            <li>✅ Browse sample courses and lessons</li>
+            <li>✅ View rich text content with Markdown</li>
+            <li>✅ Watch embedded YouTube videos</li>
+            <li>✅ Take interactive quizzes</li>
+            <li>✅ See demo mode indicators</li>
+            <li>✅ Navigate between pages</li>
+        </ul>
+    </div>
+
+    <div class="status info">
+        <h3>🚀 Next Steps</h3>
+        <p>To enable full functionality:</p>
+        <ol>
+            <li>Set up Supabase project</li>
+            <li>Configure environment variables</li>
+            <li>Run database schema</li>
+            <li>Test user authentication</li>
+        </ol>
+    </div>
+
+    <script>
+        // Test if the server is responding
+        fetch('http://localhost:3002')
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Server is responding correctly');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Server connection failed:', error);
+            });
+    </script>
+</body>
+</html>
