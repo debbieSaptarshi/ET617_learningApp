@@ -89,7 +89,7 @@ export const demoQuizQuestions: QuizQuestion[] = [
   {
     id: 'demo-question-1',
     quiz_id: 'demo-quiz-1',
-    question_text: 'What does HTML stand for?',
+    prompt: 'What does HTML stand for?',
     type: 'single_choice',
     order_index: 1,
     created_at: '2024-01-15T10:00:00Z',
@@ -98,7 +98,7 @@ export const demoQuizQuestions: QuizQuestion[] = [
   {
     id: 'demo-question-2',
     quiz_id: 'demo-quiz-1',
-    question_text: 'Which tag is used for the main heading?',
+    prompt: 'Which tag is used for the main heading?',
     type: 'single_choice',
     order_index: 2,
     created_at: '2024-01-15T10:00:00Z',
@@ -107,7 +107,7 @@ export const demoQuizQuestions: QuizQuestion[] = [
   {
     id: 'demo-question-3',
     quiz_id: 'demo-quiz-1',
-    question_text: 'What are the main sections of an HTML document?',
+    prompt: 'What are the main sections of an HTML document?',
     type: 'multiple_choice',
     order_index: 3,
     created_at: '2024-01-15T10:00:00Z',
@@ -116,7 +116,7 @@ export const demoQuizQuestions: QuizQuestion[] = [
   {
     id: 'demo-question-4',
     quiz_id: 'demo-quiz-1',
-    question_text: 'Explain the purpose of semantic HTML elements.',
+    prompt: 'Explain the purpose of semantic HTML elements.',
     type: 'short_answer',
     order_index: 4,
     created_at: '2024-01-15T10:00:00Z',

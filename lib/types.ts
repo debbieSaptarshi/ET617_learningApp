@@ -31,6 +31,7 @@ export interface Quiz {
   id: string
   lesson_id: string
   title: string
+  description?: string
   passing_score: number
   created_at: string
   updated_at: string
@@ -51,6 +52,7 @@ export interface QuizOption {
   question_id: string
   option_text: string
   is_correct: boolean
+  order_index?: number
   created_at: string
   updated_at: string
 }
@@ -95,6 +97,9 @@ export interface Event {
 // Event tracking types
 export interface TrackEvent {
   event_type: string
+  session_id?: string
+  user_id?: string | null
+  occurred_at?: string
   page?: string
   element?: string
   video_ref?: string
@@ -116,5 +121,5 @@ export interface QuizResult {
   attempt_id: string
   score_percent: number
   passed: boolean
-  answers: QuizAnswer[]
+  answers: Pick<QuizAnswer, 'question_id' | 'is_correct' | 'answer_text' | 'selected_option_ids'>[]
 }

@@ -201,8 +201,8 @@ export default async function DashboardPage() {
         
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
           <div className="text-3xl font-bold text-primary-600 mb-2">
-            {quizAttempts?.length > 0 
-              ? Math.round(quizAttempts.filter((a: any) => a.passed).length / quizAttempts.length * 100)
+            {(quizAttempts?.length ?? 0) > 0
+              ? Math.round(quizAttempts!.filter((a: any) => a.passed).length / quizAttempts!.length * 100)
               : 0
             }%
           </div>
@@ -211,8 +211,8 @@ export default async function DashboardPage() {
         
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 text-center">
           <div className="text-3xl font-bold text-primary-600 mb-2">
-            {quizAttempts?.length > 0 
-              ? Math.round(quizAttempts.reduce((sum: number, a: any) => sum + (a.score_percent || 0), 0) / quizAttempts.length)
+            {(quizAttempts?.length ?? 0) > 0
+              ? Math.round(quizAttempts!.reduce((sum: number, a: any) => sum + (a.score_percent || 0), 0) / quizAttempts!.length)
               : 0
             }%
           </div>

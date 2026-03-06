@@ -60,13 +60,7 @@ export default function Quiz({ quizId, questions, onComplete }: QuizProps) {
         currentQuestion.quiz_options.find(opt => opt.id === value)?.is_correct :
         false
 
-    trackQuestionAnswered(questionId, isCorrect, 
-      questionType === 'short_answer' ? value : 
-      questionType === 'single_choice' ? 
-        currentQuestion.quiz_options.find(opt => opt.id === value)?.option_text || '' :
-        'Multiple choice selection',
-      quizId
-    )
+    trackQuestionAnswered(questionId, quizId, !!isCorrect)
   }
 
   const handleNext = () => {
