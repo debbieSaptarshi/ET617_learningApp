@@ -8,6 +8,7 @@ import { config } from '@/lib/config'
 import { getDemoData } from '@/lib/demo-data'
 import VideoPlayer from '@/components/VideoPlayer'
 import Quiz from '@/components/Quiz'
+import AITutor from '@/components/AITutor'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
@@ -245,6 +246,12 @@ export default function LessonPage({ params }: LessonPageProps) {
           </div>
         </div>
       )}
+
+      {/* AI Tutor */}
+      <AITutor
+        lessonTitle={lesson.title}
+        lessonContent={lesson.content_richtext}
+      />
 
       {/* Navigation */}
       <div className="flex justify-between">
