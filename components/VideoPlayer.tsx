@@ -58,23 +58,15 @@ export default function VideoPlayer({ videoRef, lessonId }: VideoPlayerProps) {
     
     switch (playerState) {
       case window.YT.PlayerState.PLAYING:
-        trackVideoEvent('video_play', videoRef, {
-          current_time: currentTime,
-          lesson_id: lessonId
-        })
+        trackVideoEvent('play', videoRef, lessonId, currentTime)
         break
-        
+
       case window.YT.PlayerState.PAUSED:
-        trackVideoEvent('video_pause', videoRef, {
-          current_time: currentTime,
-          lesson_id: lessonId
-        })
+        trackVideoEvent('pause', videoRef, lessonId, currentTime)
         break
-        
+
       case window.YT.PlayerState.ENDED:
-        trackVideoEvent('video_complete', videoRef, {
-          lesson_id: lessonId
-        })
+        trackVideoEvent('complete', videoRef, lessonId)
         break
     }
   }
@@ -88,11 +80,7 @@ export default function VideoPlayer({ videoRef, lessonId }: VideoPlayerProps) {
       const currentTime = playerInstanceRef.current.getCurrentTime()
       const seekTo = event.target.value
       
-      trackVideoEvent('video_seek', videoRef, {
-        seek_from: currentTime,
-        seek_to: seekTo,
-        lesson_id: lessonId
-      })
+      trackVideoEvent('seek', videoRef, lessonId, currentTime)
       
       playerInstanceRef.current.seekTo(seekTo, true)
     }

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
-import { QuizSubmission, QuizResult } from '@/lib/types'
+import { QuizSubmission, QuizResult, QuizAnswer } from '@/lib/types'
 
 export async function POST(request: NextRequest) {
   try {
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     // Process answers and calculate score
     let correctAnswers = 0
     const totalQuestions = questions.length
-    const quizAnswers = []
+    const quizAnswers: Pick<QuizAnswer, 'question_id' | 'is_correct' | 'answer_text' | 'selected_option_ids'>[] = []
 
     for (const question of questions) {
       const userAnswer = answers.find(a => a.question_id === question.id)
@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
       switch (question.type) {
         case 'single_choice':
           if (userAnswer.selected_option_ids && userAnswer.selected_option_ids.length === 1) {
-            const selectedOption = question.quiz_options.find(
+            const selectedOption = (question.quiz_options as { id: string; is_correct: boolean }[]).find(
               opt => opt.id === userAnswer.selected_option_ids![0]
             )
             isCorrect = selectedOption?.is_correct || false
@@ -99,9 +99,10 @@ export async function POST(request: NextRequest) {
 
         case 'multiple_choice':
           if (userAnswer.selected_option_ids && userAnswer.selected_option_ids.length > 0) {
-            const correctOptions = question.quiz_options.filter(opt => opt.is_correct)
+            const options = question.quiz_options as { id: string; is_correct: boolean }[]
+            const correctOptions = options.filter(opt => opt.is_correct)
             const userSelectedCorrect = userAnswer.selected_option_ids.every(
-              id => question.quiz_options.find(opt => opt.id === id)?.is_correct
+              id => options.find(opt => opt.id === id)?.is_correct
             )
             const userSelectedAllCorrect = userAnswer.selected_option_ids.length === correctOptions.length
             isCorrect = userSelectedCorrect && userSelectedAllCorrect

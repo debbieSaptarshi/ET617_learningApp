@@ -22,15 +22,15 @@ interface LessonPageProps {
 interface LessonData {
   id: string
   title: string
-  content_richtext?: string
-  video_provider?: string
-  video_ref?: string
+  content_richtext?: string | null
+  video_provider?: string | null
+  video_ref?: string | null
 }
 
 interface QuizData {
   id: string
   title: string
-  description: string
+  description?: string
   passing_score: number
   questions: any[]
 }
